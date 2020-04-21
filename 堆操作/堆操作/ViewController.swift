@@ -23,11 +23,11 @@ class ViewController: UIViewController {
         for item in self.itemArr {
             print(item)
         }
-//        removeHeapTopItem(&self.itemArr)
-//        print("---------------------------")
-//        for item in self.itemArr {
-//            print(item)
-//        }
+        removeHeapTopItem(&self.itemArr)
+        print("---------------------------")
+        for item in self.itemArr {
+            print(item)
+        }
         
         sort(&self.itemArr, self.itemArr.count)
         print("---------------------------")
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             print(item)
         }
     }
-    
+    ///删除对顶
     func removeHeapTopItem(_ a:inout [Int]) {
         a.removeFirst()
         a.insert(a[a.count - 1], at: 0);
@@ -43,14 +43,14 @@ class ViewController: UIViewController {
         var index = 0
         headpify(&a, a.count, &index)
     }
-
+    ///建堆
     func buildHeap(_ a:inout [Int],_ n : Int) ->[Int] {
         for var index in (0...n/2).reversed() {
             headpify(&a, n, &index)
         }
         return a
     }
-
+    ///堆序列
     func headpify(_ a:inout [Int],_ n: Int,_ i:inout Int) {
         while true {
             var maxPos = i
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             i = maxPos
         }
     }
-    
+    ///插入元素
     func insert(_ n:inout [Int],_ data:Int) {
         n.append(data)
         var i = n.count - 1
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
             i = (i + 1)/2 - 1
         }
     }
-    
+    ///堆排序
     func sort(_ a:inout [Int],_ n:Int)  {
         a = buildHeap(&a, a.count)
         var k = a.count - 1;
@@ -86,9 +86,6 @@ class ViewController: UIViewController {
             var index = 0
             headpify(&a, k, &index)
         }
-        
     }
-    
-    
 }
 
